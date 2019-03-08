@@ -11,7 +11,9 @@ My analysis was based on finding the ideal scenario to raise a family using the 
 
 
 CRIM per capita crime rate by town
+
 PTRATIO pupil-teacher ratio by town
+
 MEDV Median value of owner-occupied homes in $1000’s
 
 
