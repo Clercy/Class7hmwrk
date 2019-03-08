@@ -2,7 +2,7 @@ Class 7 Homework
 
 Chart Generation
 
-I reset my chart generator to create 3 column charts as the 4 column run was very long to run.  After an hour I had only generated 1/4 of the files.  The 3 column generation takes approx. 20 minutes.
+I reset my chart generator to create 3 column charts as the 4 column run took very long to execute.  After an hour I had only generated 1/4 of the files.  The 3 column generation takes approx. 20 minutes.
 
 
 Chart Analysis
