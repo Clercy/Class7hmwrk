@@ -58,6 +58,7 @@ Then I tried running it to see the outcome:
 
 lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
 $ docker run -i class7-image
+
 usage: generate_charts_hw7.py [-h] csvfile
 generate_charts_hw7.py: error: the following arguments are required: csvfile
 
@@ -65,12 +66,14 @@ generate_charts_hw7.py: error: the following arguments are required: csvfile
 Then I proceeded to create a volume:
 
 lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+
 $ docker volume create myvol7
 myvol7
 
 Then I checked the availability:
 
 lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+
 $ docker volume ls
 DRIVER              VOLUME NAME
 local               myvol7
@@ -78,6 +81,7 @@ local               myvol7
 Then I tried referencing it getting the same error:
 
 lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+
 $ docker run -v myvol7:/app class7-image
 usage: generate_charts_hw7.py [-h] csvfile
 generate_charts_hw7.py: error: the following arguments are required: csvfile
