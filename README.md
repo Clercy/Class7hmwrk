@@ -27,71 +27,53 @@ Adding a chart legend also helped me greatly as it gave me a reference point to 
 
 REACH: DOCKER
 
-I tried making this work but was not able to get further than this portion.
+******* Fixed the docker issue as requested.
+******* generate_charts_hw7.py was updated with the sort from class
 
-I built my container:
+Docker update process
 
-lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+lcler@LAPTOP-D2T6EOO0 MINGW64 ~/desktop/class7hmwrk (master)
 
 $ docker build -t class7-image .
 
-Sending build context to Docker daemon  17.02MB
-Step 1/10 : FROM ubuntu:16.04
+Sending build context to Docker daemon  423.3MB
+
+Step 1/11 : FROM ubuntu:16.04
+
  ---> 7e87e2b3bf7a
-Step 2/10 : MAINTAINER Luigi Clerici <Clercy.github.io>
- ---> Using cache
- ---> 5a4d6caa160f
- .
- .
-Successfully built c99f429ba774
-Successfully tagged class7-image:latest
 
-I checked for the available containers:
+Step 2/11 : MAINTAINER Luigi Clerici <Clercy.github.io>
 
-lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+
+lcler@LAPTOP-D2T6EOO0 MINGW64 ~/desktop/class7hmwrk (master)
 
 $ docker images
 
 REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
-class7-image          latest              c99f429ba774        16 seconds ago      624MB
-class7-charts-image   latest              e43bbfccfc05        23 hours ago        624MB
-class4-python-image   latest              0106975cd944        3 weeks ago         572MB
+
+class7-image          latest              8fa0fe1fb7a0        5 days ago          782MB
 
 
-Then I tried running it to see the outcome:
+lcler@LAPTOP-D2T6EOO0 MINGW64 ~/desktop/class7hmwrk (master)
 
-lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+Ran the following:
 
-$ docker run -i class7-image
+$ docker run -t -v /${PWD}:/${PWD} -w/${PWD} class7-image housing.data.txt
 
-usage: generate_charts_hw7.py [-h] csvfile
+Namespace(csvfile='housing.data.txt')
 
-generate_charts_hw7.py: error: the following arguments are required: csvfile
+housing.data.txt
 
-Then I proceeded to create a volume:
+./generate_charts_hw7.py:40: ParserWarning:
 
-lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
+Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
 
-$ docker volume create myvol7
-
-myvol7
-
-Then I checked the availability:
-
-lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
-
-$ docker volume ls
-
-DRIVER              VOLUME NAME
-
-local               myvol7
-
-Then I tried referencing it getting the same error:
-
-lcler@LAPTOP-D2T6EOO0 MINGW64 ~/Desktop/class7hmwrk (master)
-
-$ docker run -v myvol7:/app class7-image
-
-usage: generate_charts_hw7.py [-h] csvfile
-
-generate_charts_hw7.py: error: the following arguments are required: csvfile
+      CRIM  ...  MEDV
+0     0.01  ...  24.0
+1     0.03  ...  21.6
+2     0.03  ...  34.7
+3     0.03  ...  33.4
+.
+.
+.
+.
