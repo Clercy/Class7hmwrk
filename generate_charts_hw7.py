@@ -53,6 +53,9 @@ print(data)
 for c in data.columns:
     ####print(c)           # Returns name
     ####print(data[c])     # Returns data
+
+
+
     for d in data.columns:
 
         for e in data.columns:
@@ -65,7 +68,14 @@ for c in data.columns:
 
                     plt.figure(figsize=(12,8))
                     plt.title("Boston Housing Data")
-                    plt.plot( data[c], 'r',label=c + ' : Mn(' + str(np.round(np.mean(data[c]),decimals=2)) + '), Std(' + str(np.round(np.std(data[c]),decimals=2)) + ')')
+
+
+                    sorted_dataframe = data.sort_values(c) # where c was the first column we were plotting
+                    sorted_dataframe = sorted_dataframe.reset_index(drop=True)
+
+                    #plt.plot( data[c], 'r',label=c + ' : Mn(' + str(np.round(np.mean(data[c]),decimals=2)) + '), Std(' + str(np.round(np.std(data[c]),decimals=2)) + ')')
+                    plt.plot( sorted_dataframe[c], 'r',label=c + ' : Mn(' + str(np.round(np.mean(data[c]),decimals=2)) + '), Std(' + str(np.round(np.std(data[c]),decimals=2)) + ')')
+
                     plt.plot( data[d], 'b',label=d + ' : Mn(' + str(np.round(np.mean(data[d]),decimals=2)) + '), Std(' + str(np.round(np.std(data[d]),decimals=2)) + ')')
                     plt.plot( data[e], 'g',label=e + ' : Mn(' + str(np.round(np.mean(data[e]),decimals=2)) + '), Std(' + str(np.round(np.std(data[e]),decimals=2)) + ')')
                     #plt.plot( data[f], 'c',label=f + ' : Mn(' + str(np.round(np.mean(data[f]),decimals=2)) + '), Std(' + str(np.round(np.std(data[f]),decimals=2)) + ')')
@@ -73,8 +83,9 @@ for c in data.columns:
                     plt.xlabel('Respondents')
                     plt.ylabel('Units')
                     plt.legend(loc='upper left')
-                    #plt.savefig('PLT_' + c + '_' + d + '_'+ e + '_' + f + '_' + thetimestamp() + '.png')
+
                     plt.savefig('PLT_' + c + '_' + d + '_'+ e + '_' + thetimestamp() + '.png')
+                    #plt.savefig('PLT_' + c + '_' + d + '_'+ e + '_' + f + '_' + thetimestamp() + '.png')
                     plt.close()
                     ########## Plotter Data End
 
